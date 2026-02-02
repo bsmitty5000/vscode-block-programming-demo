@@ -1,0 +1,114 @@
+{
+  "name": "tree-view-block-editor",
+  "displayName": "Tree View Block Editor",
+  "description": "Block editor using VS Code TreeView API",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "treeBlockEditor",
+          "name": "Block Editor",
+          "when": "true"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "treeBlockEditor.refreshEndpoints",
+        "title": "Refresh Endpoints",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "treeBlockEditor.addBlock",
+        "title": "Add Block"
+      },
+      {
+        "command": "treeBlockEditor.removeBlock",
+        "title": "Remove Block"
+      },
+      {
+        "command": "treeBlockEditor.connectBlocks",
+        "title": "Connect To..."
+      },
+      {
+        "command": "treeBlockEditor.disconnectBlocks",
+        "title": "Disconnect"
+      },
+      {
+        "command": "treeBlockEditor.executeSequence",
+        "title": "Execute Sequence",
+        "icon": "$(play)"
+      },
+      {
+        "command": "treeBlockEditor.clearBlocks",
+        "title": "Clear All Blocks"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "treeBlockEditor.refreshEndpoints",
+          "when": "view == treeBlockEditor",
+          "group": "navigation"
+        },
+        {
+          "command": "treeBlockEditor.executeSequence",
+          "when": "view == treeBlockEditor",
+          "group": "navigation"
+        },
+        {
+          "command": "treeBlockEditor.clearBlocks",
+          "when": "view == treeBlockEditor",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "treeBlockEditor.addBlock",
+          "when": "view == treeBlockEditor && viewItem == endpoint",
+          "group": "inline"
+        },
+        {
+          "command": "treeBlockEditor.removeBlock",
+          "when": "view == treeBlockEditor && viewItem == block",
+          "group": "inline"
+        },
+        {
+          "command": "treeBlockEditor.connectBlocks",
+          "when": "view == treeBlockEditor && viewItem == block",
+          "group": "1_actions"
+        },
+        {
+          "command": "treeBlockEditor.disconnectBlocks",
+          "when": "view == treeBlockEditor && viewItem == block",
+          "group": "1_actions"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@types/node-fetch": "^2.6.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
