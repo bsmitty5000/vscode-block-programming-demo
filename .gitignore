@@ -25,7 +25,6 @@ treeViewExtension/.vscode-test/
 *.vsix
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo

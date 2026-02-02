@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-extension",
+            "type": "npm",
+            "script": "compile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$tsc",
+            "options": {
+                "cwd": "${workspaceFolder}/extension"
+            }
+        },
+        {
+            "label": "build-treeViewExtension",
+            "type": "npm",
+            "script": "compile",
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$tsc",
+            "options": {
+                "cwd": "${workspaceFolder}/treeViewExtension"
+            }
+        },
+        {
+            "label": "watch-extension",
+            "type": "npm",
+            "script": "watch",
+            "isBackground": true,
+            "problemMatcher": "$tsc-watch",
+            "options": {
+                "cwd": "${workspaceFolder}/extension"
+            }
+        },
+        {
+            "label": "watch-treeViewExtension",
+            "type": "npm",
+            "script": "watch",
+            "isBackground": true,
+            "problemMatcher": "$tsc-watch",
+            "options": {
+                "cwd": "${workspaceFolder}/treeViewExtension"
+            }
+        }
+    ]
+}
